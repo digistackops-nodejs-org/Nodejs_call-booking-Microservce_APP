@@ -26,13 +26,16 @@ sudo chmod -R 755 /var/www/frontend/
 ## Get the Code
 
 ```
-git clone https://github.com/digistackops-nodejs-org/Nodejs-3-tier-UMS-Local.git
-cd Nodejs-3-tier-UMS-Local
+sudo mkdir /apps
+cd /apps
+sudo git clone https://github.com/digistackops-nodejs-org/Nodejs_call-booking-Microservce_APP.git
+cd Nodejs_call-booking-Microservce_APP
 ```
 Switch branch
 
 ```
-git checkout 02-Local-setup-Prod-V1
+sudo git checkout 01-Local-setup-TestCase-V1
+sudo chown -R ec2-user:ec2-user /apps/Nodejs_call-booking-Microservce_APP
 ```
 Note => Nginx we we for 2 purpose 
         (1) For Frontend Load Balancing 
@@ -50,9 +53,9 @@ Note ==> we already setup the Reverse Proxy using Nginx alredy setup "nginx.conf
 ### Setup "nginx.conf" for reverse Proxy to backend, we already have "nginx.conf" file 
 
 ```
-cd client
+cd user-ui
 sudo mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.bak
-sudo mv /home/ec2-user/Nodejs-3-tier-UMS-Local/client/nginx.conf /etc/nginx/
+sudo mv /apps/Nodejs_call-booking-Microservce_APP/user-ui/nginx.conf /etc/nginx/
 ```
 Edit your the Backend IP Address in nginx.conf
 ```
