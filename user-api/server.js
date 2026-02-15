@@ -1,36 +1,41 @@
-const dotenv = require('dotenv')
-dotenv.config()
-const express = require('express');
-const routes = require('./routes');
-const cors = require('cors')
+/**
+ * Example Server Entry Point
+ * Copy this structure to your server.js
+ */
 
-const app = express();
-app.use(cors())
+require('dotenv').config();
+const app = require('./app');
+const mongoose = require('mongoose');
 
-const connectDB = require('./config/db');
-const { notFound, errorHandler } = require('./middlewares/errorMiddleware');
+const PORT = process.env.PORT || 3001;
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/mydb';
 
-const client = require('prom-client');
-const { httpRequestTimer, counter } = require('./metrics');
-const register = new client.Registry();
-
-// Register the histogram
-register.registerMetric(httpRequestTimer);
-register.registerMetric(counter);
-
-connectDB();
-
-app.use(express.json());
-
-app.use('/api', routes);
-
-app.get('/metrics', async (req, res) => {
-    res.setHeader('Content-Type', register.contentType);
-    res.send(await register.metrics());
+// Connect to MongoDB
+mongoose.connect(MONGODB_URI, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+})
+.then(() => {
+  console.log('✅ Connected to MongoDB');
+  
+  // Start server
+  app.listen(PORT, () => {
+    console.log(`🚀 Server running on port ${PORT}`);
+    console.log(`🏥 Health check: http://localhost:${PORT}/health`);
+  });
+})
+.catch((error) => {
+  console.error('❌ MongoDB connection error:', error);
+  process.exit(1);
 });
 
-app.use(notFound);
-app.use(errorHandler);
-
-const PORT = process.env.PORT || 1004
-app.listen(PORT, console.log(`Server started on PORT ${PORT}`));
+// Graceful shutdown
+process.on('SIGTERM', () => {
+  console.log('SIGTERM signal received: closing HTTP server');
+  server.close(() => {
+    mongoose.connection.close(false, () => {
+      console.log('MongoDB connection closed');
+      process.exit(0);
+    });
+  });
+});
