@@ -4,6 +4,7 @@
  */
 
 require('dotenv').config();
+const rateLimit = require('express-rate-limit');
 const app = require('./app');
 const mongoose = require('mongoose');
 
