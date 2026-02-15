@@ -1,0 +1,80 @@
+## Launch EC2 "t2.micro" Instance and In Sg, Open port "5000" for Python Application 
+# Backend-Node.js Application server
+
+## Install Node and NPM
+```
+sudo yum update -y
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install 16
+```
+### Check Node Version
+```
+node -v
+npm -v
+```
+### Install Git
+```
+sudo yum install git -y
+```
+## Get the Code
+```
+sudo mkdir /apps
+cd /apps
+sudo git clone https://github.com/digistackops-nodejs-org/Nodejs_call-booking-Microservce_APP.git
+cd Nodejs_call-booking-Microservce_APP
+sudo git checkout 01-Local-setup-TestCase-V1
+sudo chown -R ec2-user:ec2-user /apps/Nodejs_call-booking-Microservce_APP
+```
+```
+cd admin-api
+```
+## Setup your Application Database by executing "initdb.sql" script from Application-server
+
+## Add .env for DB Credentials 
+```
+sudo vim .env
+```
+```
+DB_HOST=<DB-Private-IP>
+DB_USER=appuser
+DB_PASSWORD=Aditya
+DB_NAME=crud_app
+```
+
+## Install Dependencies
+```
+npm install
+```
+
+## Start the App
+```
+npm start
+```
+HERE it is not recommend in Production, so we follow the HA in Production
+
+Start Backend Application
+```
+npm install -g pm2
+```
+To run these Backend Application up and Running we use Pm2 service
+```
+pm2 start app.js --name backend
+```
+<img width="1089" height="110" alt="image" src="https://github.com/user-attachments/assets/4acd9488-9434-4dc3-86a1-c598bd6658c0" />
+
+To list all pm2 Services
+```
+pm2 list
+```
+To stop these pm2 service
+```
+pm2 stop backend
+```
+<img width="1105" height="127" alt="image" src="https://github.com/user-attachments/assets/a584378a-fb91-4911-8112-51cf7e49ab0e" />
+
+To delete these pm2 service
+```
+pm2 delete backend
+```
+
