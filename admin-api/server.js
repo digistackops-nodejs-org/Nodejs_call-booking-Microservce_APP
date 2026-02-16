@@ -32,6 +32,6 @@ app.get('/metrics', async (req, res) => {
 app.use(notFound);
 app.use(errorHandler);
 
-const PORT = process.env.PORT || 1004
+const PORT = process.env.PORT || 1005
 
 app.listen(PORT, console.log(`Server started on PORT ${PORT}`));
