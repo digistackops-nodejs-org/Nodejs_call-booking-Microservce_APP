@@ -73,10 +73,6 @@ db.createUser({
   ]
 });
 ```
-Create Collection "users"
-```
-db.createCollection("users")
-```
 Exit from DB
 ```
 exit
