@@ -71,7 +71,7 @@ sudo systemctl restart nginx
 sudo vim .env
 ```
 ```
-REACT
+REACT_APP_API_URL=http://<AWS-IP-Adddress>:1004
 ```
 Install Dependencies
 ```
