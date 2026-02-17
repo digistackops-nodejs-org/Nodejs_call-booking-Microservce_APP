@@ -15,7 +15,7 @@ const healthController = require('../controllers/health.controllers');
  * @access Public
  * @returns {Object} 200 - Liveness status
  */
-router.get('/live', (req, res) => healthControllers.liveness(req, res));
+router.get('/live', (req, res) => healthController.liveness(req, res));
 
 /**
  * @route GET /health/ready
@@ -23,7 +23,7 @@ router.get('/live', (req, res) => healthControllers.liveness(req, res));
  * @access Public
  * @returns {Object} 200 - Readiness status with dependency checks
  */
-router.get('/ready', (req, res) => healthControllers.readiness(req, res));
+router.get('/ready', (req, res) => healthController.readiness(req, res));
 
 /**
  * @route GET /health
@@ -31,6 +31,6 @@ router.get('/ready', (req, res) => healthControllers.readiness(req, res));
  * @access Public
  * @returns {Object} 200 - Comprehensive health status
  */
-router.get('/', (req, res) => healthControllers.health(req, res));
+router.get('/', (req, res) => healthController.health(req, res));
 
 module.exports = router;
