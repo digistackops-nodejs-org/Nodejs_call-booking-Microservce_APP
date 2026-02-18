@@ -67,7 +67,7 @@ restart your Nginx
 sudo systemctl restart nginx
 ```
 ### Frontend Setup
- Add .env for DB Credentials 
+ Add .env for Backend Credentials 
 ```
 sudo vim .env
 ```
