@@ -1,7 +1,10 @@
 # Admin-Api
 ## Launch EC2 "t2.micro" Instance and In Sg, Open port "1005" for NodeJS  Application 
 # Backend-Node.js Application server
-
+## add Application User
+```
+sudo useradd adminapi
+```
 ## Install Node and NPM
 ```
 sudo yum update -y
@@ -25,7 +28,7 @@ cd /apps
 sudo git clone https://github.com/digistackops-nodejs-org/Nodejs_call-booking-Microservce_APP.git
 cd Nodejs_call-booking-Microservce_APP
 sudo git checkout 01-Local-setup-TestCase-V1
-sudo chown -R ec2-user:ec2-user /apps/Nodejs_call-booking-Microservce_APP
+sudo chown -R adminapi:adminapi /apps/Nodejs_call-booking-Microservce_APP
 ```
 ```
 cd admin-api
