@@ -28,7 +28,7 @@ sudo git checkout 01-Local-setup-TestCase-V1
 sudo chown -R ec2-user:ec2-user /apps/Nodejs_call-booking-Microservce_APP
 ```
 ```
-cd user-api
+cd admin-api
 ```
 
 ## Add .env for DB Credentials 
