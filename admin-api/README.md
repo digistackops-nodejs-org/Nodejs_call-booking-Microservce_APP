@@ -36,7 +36,7 @@ cd admin-api
 sudo vim .env
 ```
 ```
-PORT=1005
+PORT=1004
 NODE_ENV=production
 MONGO_URI=mongodb://appuser:Pa55Word@<DB-Ip-Address>:27017/user-account
 # JWT_SECRET=StrongProductionSecretKey
