@@ -4,6 +4,7 @@
 ## add Application User
 ```
 sudo useradd adminapi
+sudo passwd adminapi
 ```
 ## Install Node and NPM
 ```
