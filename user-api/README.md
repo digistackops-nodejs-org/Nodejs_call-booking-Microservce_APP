@@ -1,6 +1,10 @@
 ## Launch EC2 "t2.micro" Instance and In Sg, Open port "1004" for NodeJS  Application 
 # Backend-Node.js Application server
-
+## add Application User
+```
+sudo useradd userapi
+sudo passwd userapi
+```
 ## Install Node and NPM
 ```
 sudo yum update -y
